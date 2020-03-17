@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.omg.org/bpmn20" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_WYiAMF1WEeqreaGrmpgiLg" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.omg.org/bpmn20" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_oPId0GU3Eeqytfo--e20KA" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
   <bpmn2:itemDefinition id="_patientIdItem" structureRef="Integer"/>
   <bpmn2:itemDefinition id="_patientDataItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="_patientObjItem" structureRef="com.redhat.healthcare.domain.Patient"/>
   <bpmn2:itemDefinition id="__91970099-C311-4E0B-BFFC-8453D15A1DA0_MethodInputXItem" structureRef="String"/>
   <bpmn2:itemDefinition id="__91970099-C311-4E0B-BFFC-8453D15A1DA0_UrlInputXItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="__91970099-C311-4E0B-BFFC-8453D15A1DA0_ResultClassInputXItem" structureRef="String"/>
   <bpmn2:itemDefinition id="__91970099-C311-4E0B-BFFC-8453D15A1DA0_ConnectTimeoutInputXItem" structureRef="String"/>
   <bpmn2:itemDefinition id="__91970099-C311-4E0B-BFFC-8453D15A1DA0_ContentDataInputXItem" structureRef="String"/>
   <bpmn2:itemDefinition id="__91970099-C311-4E0B-BFFC-8453D15A1DA0_PasswordInputXItem" structureRef="String"/>
   <bpmn2:itemDefinition id="__91970099-C311-4E0B-BFFC-8453D15A1DA0_ReadTimeoutInputXItem" structureRef="String"/>
   <bpmn2:itemDefinition id="__91970099-C311-4E0B-BFFC-8453D15A1DA0_UsernameInputXItem" structureRef="String"/>
-  <bpmn2:itemDefinition id="__91970099-C311-4E0B-BFFC-8453D15A1DA0_ResultOutputXItem" structureRef="java.lang.Object"/>
-  <bpmn2:process id="hospital_scheduling_kjar.patient_encounter_process" drools:packageName="com.redhat.healthcare" drools:version="1.0.1" drools:adHoc="false" name="patient_encounter_process" isExecutable="true">
+  <bpmn2:itemDefinition id="__91970099-C311-4E0B-BFFC-8453D15A1DA0_ResultOutputXItem" structureRef="com.redhat.healthcare.domain.Patient"/>
+  <bpmn2:process id="hospital_scheduling_kjar.patient_encounter_process" drools:packageName="com.redhat.healthcare" drools:version="1.0.2" drools:adHoc="false" name="patient_encounter_process" isExecutable="true">
+    <bpmn2:extensionElements>
+      <drools:import name="com.redhat.healthcare.domain.Patient"/>
+    </bpmn2:extensionElements>
     <bpmn2:property id="patientId" itemSubjectRef="_patientIdItem" name="patientId"/>
     <bpmn2:property id="patientData" itemSubjectRef="_patientDataItem" name="patientData"/>
+    <bpmn2:property id="patientObj" itemSubjectRef="_patientObjItem" name="patientObj"/>
     <bpmn2:sequenceFlow id="_5ED11F43-3EEC-4AB1-BB4A-230228B31EEF" sourceRef="_7598745E-39E7-4E8D-A954-329CB4E98DC4" targetRef="_E9EFD82B-2BCF-4CD9-9AB1-13CB3CB336BD">
       <bpmn2:extensionElements>
         <drools:metaData name="isAutoConnection.source">
@@ -72,7 +78,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>_5ED11F43-3EEC-4AB1-BB4A-230228B31EEF</bpmn2:incoming>
       <bpmn2:outgoing>_8A7F9C68-38DB-4D82-B411-7979CB3BED4A</bpmn2:outgoing>
-      <bpmn2:ioSpecification id="_WYiAMV1WEeqreaGrmpgiLg"/>
+      <bpmn2:ioSpecification id="_oPJE4GU3Eeqytfo--e20KA"/>
     </bpmn2:callActivity>
     <bpmn2:callActivity id="_7598745E-39E7-4E8D-A954-329CB4E98DC4" drools:independent="false" drools:waitForCompletion="true" name="Execute 
 Clinical Care" calledElement="hospital_scheduling_kjar.execute_clinical_care">
@@ -84,7 +90,7 @@ Clinical Care]]></drools:metaValue>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_3EA7DE07-F482-491E-BC71-BFABAA7DF744</bpmn2:incoming>
       <bpmn2:outgoing>_5ED11F43-3EEC-4AB1-BB4A-230228B31EEF</bpmn2:outgoing>
-      <bpmn2:ioSpecification id="_WYiAMl1WEeqreaGrmpgiLg"/>
+      <bpmn2:ioSpecification id="_oPJE4WU3Eeqytfo--e20KA"/>
     </bpmn2:callActivity>
     <bpmn2:callActivity id="_A4B80768-19CB-41C8-BAC0-B450B892CCAE" drools:independent="false" drools:waitForCompletion="true" name="Assign PACT to Patient" calledElement="hospital_scheduling_kjar.assign_pact">
       <bpmn2:extensionElements>
@@ -94,36 +100,38 @@ Clinical Care]]></drools:metaValue>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_50CA7AFC-F0B4-469F-9C94-CDFFAC674511</bpmn2:incoming>
       <bpmn2:outgoing>_3EA7DE07-F482-491E-BC71-BFABAA7DF744</bpmn2:outgoing>
-      <bpmn2:ioSpecification id="_WYiAM11WEeqreaGrmpgiLg"/>
+      <bpmn2:ioSpecification id="_oPJE4mU3Eeqytfo--e20KA"/>
     </bpmn2:callActivity>
     <bpmn2:startEvent id="_BF3CDFFD-2AF2-44AC-B723-97F595D7F213">
       <bpmn2:outgoing>_2D0AAEF8-AD92-436B-A511-744BBB53B2DF</bpmn2:outgoing>
     </bpmn2:startEvent>
     <bpmn2:task id="_91970099-C311-4E0B-BFFC-8453D15A1DA0" drools:taskName="Rest" name="Pull Patient Data">
-      <bpmn2:documentation id="_WYiANF1WEeqreaGrmpgiLg"><![CDATA[jbpm-workitems-rest/index.html]]></bpmn2:documentation>
+      <bpmn2:documentation id="_oPJE42U3Eeqytfo--e20KA"><![CDATA[jbpm-workitems-rest/index.html]]></bpmn2:documentation>
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
           <drools:metaValue><![CDATA[Pull Patient Data]]></drools:metaValue>
         </drools:metaData>
         <drools:onExit-script scriptFormat="http://www.java.com/java">
-          <drools:script><![CDATA[System.out.println("Pull Patient Data()  patientData = "+kcontext.getVariable("patientData"));]]></drools:script>
+          <drools:script><![CDATA[System.out.println("Pull Patient Data()  patientDataObj = "+kcontext.getVariable("patientObj"));]]></drools:script>
         </drools:onExit-script>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_2D0AAEF8-AD92-436B-A511-744BBB53B2DF</bpmn2:incoming>
       <bpmn2:outgoing>_50CA7AFC-F0B4-469F-9C94-CDFFAC674511</bpmn2:outgoing>
-      <bpmn2:ioSpecification id="_WYinQF1WEeqreaGrmpgiLg">
+      <bpmn2:ioSpecification id="_oPJE5GU3Eeqytfo--e20KA">
         <bpmn2:dataInput id="_91970099-C311-4E0B-BFFC-8453D15A1DA0_MethodInputX" drools:dtype="String" itemSubjectRef="__91970099-C311-4E0B-BFFC-8453D15A1DA0_MethodInputXItem" name="Method"/>
         <bpmn2:dataInput id="_91970099-C311-4E0B-BFFC-8453D15A1DA0_UrlInputX" drools:dtype="String" itemSubjectRef="__91970099-C311-4E0B-BFFC-8453D15A1DA0_UrlInputXItem" name="Url"/>
+        <bpmn2:dataInput id="_91970099-C311-4E0B-BFFC-8453D15A1DA0_ResultClassInputX" drools:dtype="String" itemSubjectRef="__91970099-C311-4E0B-BFFC-8453D15A1DA0_ResultClassInputXItem" name="ResultClass"/>
         <bpmn2:dataInput id="_91970099-C311-4E0B-BFFC-8453D15A1DA0_ConnectTimeoutInputX" drools:dtype="String" itemSubjectRef="__91970099-C311-4E0B-BFFC-8453D15A1DA0_ConnectTimeoutInputXItem" name="ConnectTimeout"/>
         <bpmn2:dataInput id="_91970099-C311-4E0B-BFFC-8453D15A1DA0_ContentDataInputX" drools:dtype="String" itemSubjectRef="__91970099-C311-4E0B-BFFC-8453D15A1DA0_ContentDataInputXItem" name="ContentData"/>
         <bpmn2:dataInput id="_91970099-C311-4E0B-BFFC-8453D15A1DA0_PasswordInputX" drools:dtype="String" itemSubjectRef="__91970099-C311-4E0B-BFFC-8453D15A1DA0_PasswordInputXItem" name="Password"/>
         <bpmn2:dataInput id="_91970099-C311-4E0B-BFFC-8453D15A1DA0_ReadTimeoutInputX" drools:dtype="String" itemSubjectRef="__91970099-C311-4E0B-BFFC-8453D15A1DA0_ReadTimeoutInputXItem" name="ReadTimeout"/>
         <bpmn2:dataInput id="_91970099-C311-4E0B-BFFC-8453D15A1DA0_UsernameInputX" drools:dtype="String" itemSubjectRef="__91970099-C311-4E0B-BFFC-8453D15A1DA0_UsernameInputXItem" name="Username"/>
         <bpmn2:dataInput id="_91970099-C311-4E0B-BFFC-8453D15A1DA0_TaskNameInputX" drools:dtype="Object" name="TaskName"/>
-        <bpmn2:dataOutput id="_91970099-C311-4E0B-BFFC-8453D15A1DA0_ResultOutputX" drools:dtype="java.lang.Object" itemSubjectRef="__91970099-C311-4E0B-BFFC-8453D15A1DA0_ResultOutputXItem" name="Result"/>
-        <bpmn2:inputSet id="_WYinQV1WEeqreaGrmpgiLg">
+        <bpmn2:dataOutput id="_91970099-C311-4E0B-BFFC-8453D15A1DA0_ResultOutputX" drools:dtype="com.redhat.healthcare.domain.Patient" itemSubjectRef="__91970099-C311-4E0B-BFFC-8453D15A1DA0_ResultOutputXItem" name="Result"/>
+        <bpmn2:inputSet id="_oPJE5WU3Eeqytfo--e20KA">
           <bpmn2:dataInputRefs>_91970099-C311-4E0B-BFFC-8453D15A1DA0_MethodInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_91970099-C311-4E0B-BFFC-8453D15A1DA0_UrlInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_91970099-C311-4E0B-BFFC-8453D15A1DA0_ResultClassInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_91970099-C311-4E0B-BFFC-8453D15A1DA0_ConnectTimeoutInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_91970099-C311-4E0B-BFFC-8453D15A1DA0_ContentDataInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_91970099-C311-4E0B-BFFC-8453D15A1DA0_PasswordInputX</bpmn2:dataInputRefs>
@@ -131,42 +139,49 @@ Clinical Care]]></drools:metaValue>
           <bpmn2:dataInputRefs>_91970099-C311-4E0B-BFFC-8453D15A1DA0_UsernameInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_91970099-C311-4E0B-BFFC-8453D15A1DA0_TaskNameInputX</bpmn2:dataInputRefs>
         </bpmn2:inputSet>
-        <bpmn2:outputSet id="_WYinQl1WEeqreaGrmpgiLg">
+        <bpmn2:outputSet id="_oPJE5mU3Eeqytfo--e20KA">
           <bpmn2:dataOutputRefs>_91970099-C311-4E0B-BFFC-8453D15A1DA0_ResultOutputX</bpmn2:dataOutputRefs>
         </bpmn2:outputSet>
       </bpmn2:ioSpecification>
-      <bpmn2:dataInputAssociation id="_WYinQ11WEeqreaGrmpgiLg">
+      <bpmn2:dataInputAssociation id="_oPJE52U3Eeqytfo--e20KA">
         <bpmn2:targetRef>_91970099-C311-4E0B-BFFC-8453D15A1DA0_MethodInputX</bpmn2:targetRef>
-        <bpmn2:assignment id="_WYinRF1WEeqreaGrmpgiLg">
-          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_WYinRV1WEeqreaGrmpgiLg"><![CDATA[GET]]></bpmn2:from>
-          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_WYinRl1WEeqreaGrmpgiLg">_91970099-C311-4E0B-BFFC-8453D15A1DA0_MethodInputX</bpmn2:to>
+        <bpmn2:assignment id="_oPJE6GU3Eeqytfo--e20KA">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_oPJE6WU3Eeqytfo--e20KA"><![CDATA[GET]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_oPJE6mU3Eeqytfo--e20KA">_91970099-C311-4E0B-BFFC-8453D15A1DA0_MethodInputX</bpmn2:to>
         </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
-      <bpmn2:dataInputAssociation id="_WYinR11WEeqreaGrmpgiLg">
+      <bpmn2:dataInputAssociation id="_oPJE62U3Eeqytfo--e20KA">
         <bpmn2:targetRef>_91970099-C311-4E0B-BFFC-8453D15A1DA0_UrlInputX</bpmn2:targetRef>
-        <bpmn2:assignment id="_WYinSF1WEeqreaGrmpgiLg">
-          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_WYinSV1WEeqreaGrmpgiLg"><![CDATA[http://#{System.getProperty("naps_healthcare.patient.host.service", "user1-patient-service.naps-healthcare-user1")}:8080/patients/#{patientId}]]></bpmn2:from>
-          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_WYinSl1WEeqreaGrmpgiLg">_91970099-C311-4E0B-BFFC-8453D15A1DA0_UrlInputX</bpmn2:to>
+        <bpmn2:assignment id="_oPJE7GU3Eeqytfo--e20KA">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_oPJE7WU3Eeqytfo--e20KA"><![CDATA[http://#{System.getProperty("naps_healthcare.patient.host.service", "user1-patient-service.naps-healthcare-user1")}:8080/patients/#{patientId}]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_oPJE7mU3Eeqytfo--e20KA">_91970099-C311-4E0B-BFFC-8453D15A1DA0_UrlInputX</bpmn2:to>
         </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
-      <bpmn2:dataInputAssociation id="_WYinS11WEeqreaGrmpgiLg">
+      <bpmn2:dataInputAssociation id="_oPJE72U3Eeqytfo--e20KA">
+        <bpmn2:targetRef>_91970099-C311-4E0B-BFFC-8453D15A1DA0_ResultClassInputX</bpmn2:targetRef>
+        <bpmn2:assignment id="_oPJE8GU3Eeqytfo--e20KA">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_oPJE8WU3Eeqytfo--e20KA"><![CDATA[com.redhat.healthcare.domain.Patient]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_oPJE8mU3Eeqytfo--e20KA">_91970099-C311-4E0B-BFFC-8453D15A1DA0_ResultClassInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_oPJE82U3Eeqytfo--e20KA">
         <bpmn2:targetRef>_91970099-C311-4E0B-BFFC-8453D15A1DA0_TaskNameInputX</bpmn2:targetRef>
-        <bpmn2:assignment id="_WYinTF1WEeqreaGrmpgiLg">
-          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_WYinTV1WEeqreaGrmpgiLg"><![CDATA[Rest]]></bpmn2:from>
-          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_WYinTl1WEeqreaGrmpgiLg">_91970099-C311-4E0B-BFFC-8453D15A1DA0_TaskNameInputX</bpmn2:to>
+        <bpmn2:assignment id="_oPJE9GU3Eeqytfo--e20KA">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_oPJE9WU3Eeqytfo--e20KA"><![CDATA[Rest]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_oPJE9mU3Eeqytfo--e20KA">_91970099-C311-4E0B-BFFC-8453D15A1DA0_TaskNameInputX</bpmn2:to>
         </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
-      <bpmn2:dataOutputAssociation id="_WYinT11WEeqreaGrmpgiLg">
+      <bpmn2:dataOutputAssociation id="_oPJE92U3Eeqytfo--e20KA">
         <bpmn2:sourceRef>_91970099-C311-4E0B-BFFC-8453D15A1DA0_ResultOutputX</bpmn2:sourceRef>
-        <bpmn2:targetRef>patientData</bpmn2:targetRef>
+        <bpmn2:targetRef>patientObj</bpmn2:targetRef>
       </bpmn2:dataOutputAssociation>
     </bpmn2:task>
     <bpmn2:endEvent id="_A442622E-5920-416C-8741-4C5C4D220EE4">
       <bpmn2:incoming>_8A7F9C68-38DB-4D82-B411-7979CB3BED4A</bpmn2:incoming>
     </bpmn2:endEvent>
   </bpmn2:process>
-  <bpmndi:BPMNDiagram id="_WYinUF1WEeqreaGrmpgiLg">
-    <bpmndi:BPMNPlane id="_WYinUV1WEeqreaGrmpgiLg" bpmnElement="hospital_scheduling_kjar.patient_encounter_process">
+  <bpmndi:BPMNDiagram id="_oPJE-GU3Eeqytfo--e20KA">
+    <bpmndi:BPMNPlane id="_oPJE-WU3Eeqytfo--e20KA" bpmnElement="hospital_scheduling_kjar.patient_encounter_process">
       <bpmndi:BPMNShape id="shape__A442622E-5920-416C-8741-4C5C4D220EE4" bpmnElement="_A442622E-5920-416C-8741-4C5C4D220EE4">
         <dc:Bounds height="56.0" width="56.0" x="1122.0" y="248.0"/>
       </bpmndi:BPMNShape>
@@ -207,12 +222,12 @@ Clinical Care]]></drools:metaValue>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
-  <bpmn2:relationship id="_WYinUl1WEeqreaGrmpgiLg" type="BPSimData">
+  <bpmn2:relationship id="_oPJr8GU3Eeqytfo--e20KA" type="BPSimData">
     <bpmn2:extensionElements>
       <bpsim:BPSimData>
         <bpsim:Scenario xsi:type="bpsim:Scenario" id="default" name="Simulationscenario">
           <bpsim:ScenarioParameters xsi:type="bpsim:ScenarioParameters"/>
-          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_91970099-C311-4E0B-BFFC-8453D15A1DA0" id="_WYinU11WEeqreaGrmpgiLg">
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_91970099-C311-4E0B-BFFC-8453D15A1DA0" id="_oPJr8WU3Eeqytfo--e20KA">
             <bpsim:TimeParameters xsi:type="bpsim:TimeParameters">
               <bpsim:ProcessingTime xsi:type="bpsim:Parameter">
                 <bpsim:NormalDistribution mean="0.0" standardDeviation="0.0"/>
@@ -232,34 +247,14 @@ Clinical Care]]></drools:metaValue>
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
-          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_BF3CDFFD-2AF2-44AC-B723-97F595D7F213" id="_WYinVF1WEeqreaGrmpgiLg">
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_BF3CDFFD-2AF2-44AC-B723-97F595D7F213" id="_oPJr8mU3Eeqytfo--e20KA">
             <bpsim:TimeParameters xsi:type="bpsim:TimeParameters">
               <bpsim:ProcessingTime xsi:type="bpsim:Parameter">
                 <bpsim:NormalDistribution mean="0.0" standardDeviation="0.0"/>
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
           </bpsim:ElementParameters>
-          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_A4B80768-19CB-41C8-BAC0-B450B892CCAE" id="_WYinVV1WEeqreaGrmpgiLg">
-            <bpsim:TimeParameters xsi:type="bpsim:TimeParameters">
-              <bpsim:ProcessingTime xsi:type="bpsim:Parameter">
-                <bpsim:NormalDistribution mean="0.0" standardDeviation="0.0"/>
-              </bpsim:ProcessingTime>
-            </bpsim:TimeParameters>
-            <bpsim:ResourceParameters xsi:type="bpsim:ResourceParameters">
-              <bpsim:Availability xsi:type="bpsim:Parameter">
-                <bpsim:FloatingParameter value="0.0"/>
-              </bpsim:Availability>
-              <bpsim:Quantity xsi:type="bpsim:Parameter">
-                <bpsim:FloatingParameter value="0.0"/>
-              </bpsim:Quantity>
-            </bpsim:ResourceParameters>
-            <bpsim:CostParameters xsi:type="bpsim:CostParameters">
-              <bpsim:UnitCost xsi:type="bpsim:Parameter">
-                <bpsim:FloatingParameter value="0.0"/>
-              </bpsim:UnitCost>
-            </bpsim:CostParameters>
-          </bpsim:ElementParameters>
-          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_7598745E-39E7-4E8D-A954-329CB4E98DC4" id="_WYinVl1WEeqreaGrmpgiLg">
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_A4B80768-19CB-41C8-BAC0-B450B892CCAE" id="_oPJr82U3Eeqytfo--e20KA">
             <bpsim:TimeParameters xsi:type="bpsim:TimeParameters">
               <bpsim:ProcessingTime xsi:type="bpsim:Parameter">
                 <bpsim:NormalDistribution mean="0.0" standardDeviation="0.0"/>
@@ -279,7 +274,27 @@ Clinical Care]]></drools:metaValue>
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
-          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_E9EFD82B-2BCF-4CD9-9AB1-13CB3CB336BD" id="_WYinV11WEeqreaGrmpgiLg">
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_7598745E-39E7-4E8D-A954-329CB4E98DC4" id="_oPJr9GU3Eeqytfo--e20KA">
+            <bpsim:TimeParameters xsi:type="bpsim:TimeParameters">
+              <bpsim:ProcessingTime xsi:type="bpsim:Parameter">
+                <bpsim:NormalDistribution mean="0.0" standardDeviation="0.0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters xsi:type="bpsim:ResourceParameters">
+              <bpsim:Availability xsi:type="bpsim:Parameter">
+                <bpsim:FloatingParameter value="0.0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity xsi:type="bpsim:Parameter">
+                <bpsim:FloatingParameter value="0.0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters xsi:type="bpsim:CostParameters">
+              <bpsim:UnitCost xsi:type="bpsim:Parameter">
+                <bpsim:FloatingParameter value="0.0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_E9EFD82B-2BCF-4CD9-9AB1-13CB3CB336BD" id="_oPJr9WU3Eeqytfo--e20KA">
             <bpsim:TimeParameters xsi:type="bpsim:TimeParameters">
               <bpsim:ProcessingTime xsi:type="bpsim:Parameter">
                 <bpsim:NormalDistribution mean="0.0" standardDeviation="0.0"/>
@@ -302,7 +317,7 @@ Clinical Care]]></drools:metaValue>
         </bpsim:Scenario>
       </bpsim:BPSimData>
     </bpmn2:extensionElements>
-    <bpmn2:source>_WYiAMF1WEeqreaGrmpgiLg</bpmn2:source>
-    <bpmn2:target>_WYiAMF1WEeqreaGrmpgiLg</bpmn2:target>
+    <bpmn2:source>_oPId0GU3Eeqytfo--e20KA</bpmn2:source>
+    <bpmn2:target>_oPId0GU3Eeqytfo--e20KA</bpmn2:target>
   </bpmn2:relationship>
 </bpmn2:definitions>

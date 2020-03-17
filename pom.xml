@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.redhat.naps.da</groupId>
   <artifactId>hospital_scheduling_kjar</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.10</version>
   <packaging>kjar</packaging>
   <name>hospital_scheduling_kjar</name>
   <properties>
@@ -13,6 +13,13 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <version.org.kie>7.30.0.Final-redhat-00003</version.org.kie>
   </properties>
+  <dependencies>
+    <dependency>
+      <groupId>com.redhat.healthcare</groupId>
+      <artifactId>healthcare-domain</artifactId>
+      <version>0.0.3</version>
+    </dependency>
+  </dependencies>
   <repositories>
     <repository>
       <id>jboss-public-repository-group</id>
